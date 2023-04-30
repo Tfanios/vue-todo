@@ -1,6 +1,6 @@
 <script setup>
 import {ref, onMounted, computed, watch} from 'vue'
-
+import ClockComponent from "./components/ClockComponent.vue"
 const todos = ref([])
 const name = ref('')
 
@@ -58,6 +58,6 @@ onMounted(()=>{
       </form>
     </section>
   </main>
-
+<ClockComponent/>
 </template>
 
