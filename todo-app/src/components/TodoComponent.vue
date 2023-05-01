@@ -16,7 +16,18 @@ const addTodo = () =>{
   if(input_content.value.trim() === '' || input_category.value === null){
     return
   }
-  console.log('yo')
+  if (localStorage.getItem('todos')){
+    console.log('yo')
+    const todoData = {todo:input_content.value, todo_category:input_category.value}
+    const todoArray = JSON.parse(localStorage.getItem('todos'))
+    todoArray.push(todoData)
+    console.log(todoArray)
+    localStorage.setItem('todos', JSON.stringify(todoArray))
+  }else{
+    const todoData = [{todo:input_content.value, todo_category:input_category.value}]
+    localStorage.setItem('todos', JSON.stringify(todoData)  )
+  }
+  
 }
 watch(name, (newVal)=>{
   localStorage.setItem('name', newVal)
@@ -52,7 +63,6 @@ onMounted(()=>{
             <span class="bubble personal"></span>
             <div>personal</div>
           </label>
-          {{ input_category }}
         </div>
         <input type="submit" value="Add todo"/>
       </form>
